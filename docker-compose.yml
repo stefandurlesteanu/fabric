@@ -7,7 +7,9 @@ services:
     ports:
       - '3000:3000'
     environment:
-      MONGO_URI: mongodb://mongo:27017/patients
+      MONGO_URI: mongodb://db:27017/patients
+      JWT_SECRET: STRONG_SECRET
+      JWT_ACCESS_TOKEN_TTL: 3600
     depends_on:
       - db
 
