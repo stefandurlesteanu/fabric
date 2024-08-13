@@ -5,7 +5,8 @@ export enum UserRole {
   ADMIN = 'admin',
   PATIENT = 'patient',
   DOCTOR = 'doctor',
-  DEFAULT = "default"
+  DEFAULT = 'default',
+  ID = 'ID',
 }
 
 @Schema()

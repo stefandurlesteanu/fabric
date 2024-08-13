@@ -1,4 +1,4 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Inject, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
@@ -26,7 +26,7 @@ export class AuthenticationService {
       user.password = await this.hashingService.hash(signUpDto.password);
       return user.save();
     } catch (e) {
-      console.log(e);
+      throw new InternalServerErrorException(e);
     }
   }
 
