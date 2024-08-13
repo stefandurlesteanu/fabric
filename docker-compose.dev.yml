@@ -7,7 +7,7 @@ services:
     ports:
       - '3001:3000'
     environment:
-      MONGO_URI: mongodb://mongo:27017/patients_dev
+      MONGO_URI: mongodb://mongo:27018/patients_dev
     volumes:
       - .:/app
       - /app/node_modules
@@ -18,7 +18,7 @@ services:
     image: mongo:6.0
     container_name: mongo_db_dev
     ports:
-      - '27017:27018'
+      - '27018:27017'
     volumes:
       - mongo-data:/data/db
 
