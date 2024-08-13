@@ -8,7 +8,7 @@ import { PatientsService } from './patients.service';
 export class PatientsController {
   constructor(private readonly patientsService: PatientsService) {}
 
-  @Roles(UserRole.DOCTOR)
+  @Roles(UserRole.DOCTOR, UserRole.ADMIN)
   @Post()
   create(@Body() createPatientDto: CreatePatientDto) {
     return this.patientsService.create(createPatientDto);
