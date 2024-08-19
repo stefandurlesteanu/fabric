@@ -3,7 +3,7 @@
 1. Make sure you have Docker installed on your machine
 2. Rum `make up` to build and start containers
 3. 2 users are provider: DOCTOR, ADMIN
-4. Generate a new JWT token [here](http://localhost:3000/authentication/sign-in). It is a POST request that
+4. Generate a new JWT token [here](http://localhost:3001/authentication/sign-in). It is a POST request that
   - If you want to create <b>prescriptions</b> log in as a DOCTOR
     ```json
      {
