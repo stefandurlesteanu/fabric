@@ -1,13 +1,15 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AppointmentsModule } from './appointments/appointments.module';
-import { IamModule } from './iam/iam.module';
-import { PatientsModule } from './patients/patients.module';
-import { PrescriptionsModule } from './prescriptions/prescriptions.module';
-import { UsersModule } from './users/users.module';
+import { UserRole } from './common/enums/user-role.enum';
+import { SeedService } from './modules/iam/authentication/seeds/user.seed';
+import { IamModule } from './modules/iam/iam.module';
+import { PatientsModule } from './modules/patients/patients.module';
+import { PrescriptionsModule } from './modules/prescriptions/prescriptions.module';
+import { UsersModule } from './modules/users/users.module';
+import { AppointmentsModule } from './modules/appointments/appointments.module';
 
 
 @Module({
@@ -23,4 +25,11 @@ import { UsersModule } from './users/users.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements OnModuleInit {
+  constructor(private readonly seedService: SeedService) {}
+
+  async onModuleInit() {
+    await this.seedService.seedInitialUser(UserRole.ADMIN, 'admin@example.com');
+    await this.seedService.seedInitialUser(UserRole.DOCTOR, 'doctor@example.com');
+  }
+}

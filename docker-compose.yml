@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: patients
     ports:
-      - '3000:3000'
+      - '3001:3000'
     environment:
       MONGO_URI: mongodb://db:27017/patients
       JWT_SECRET: STRONG_SECRET
@@ -15,7 +15,7 @@ services:
 
   db:
     image: mongo:6.0
-    container_name: mongo_db_prod
+    container_name: mongo_db
     ports:
       - '27017:27017'
     volumes:
